@@ -1,0 +1,16 @@
+{
+	"extends": "tslint-config-xo",
+	"rules": {
+		"semicolon": [
+			true,
+			"never"
+		],
+		"object-curly-spacing": [
+			false
+		],
+		"comment-format": [
+			true,
+			"check-space"
+		]
+	}
+}

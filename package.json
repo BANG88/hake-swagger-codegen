@@ -1,0 +1,51 @@
+{
+  "name": "hake-swagger-codegen",
+  "version": "0.0.0",
+  "description": "A Swagger Codegen for Frontend projects",
+  "license": "MIT",
+  "repository": "bang88/hake-swagger-codegen",
+  "author": "bang sqibang@gmail.com github.com/bang88 ",
+  "bin": "cli.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "npm run lint && nyc ava --verbose",
+    "lint": "tslint --project ./tsconfig.json --fix",
+    "postinstall": "tsc",
+    "start": "tsc -w"
+  },
+  "typings": "index.d.ts",
+  "keywords": [
+    "cli-app",
+    "cli",
+    ""
+  ],
+  "dependencies": {
+    "handlebars": "^4.0.6",
+    "handlebars-helpers": "^0.8.0",
+    "js-beautify": "^1.6.12",
+    "jshint": "^2.9.4",
+    "lodash": "^4.17.4",
+    "meow": "^3.7.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.55",
+    "@types/node": "^7.0.8",
+    "ava": "^0.18.2",
+    "axios": "^0.15.3",
+    "coveralls": "^2.11.12",
+    "immutable": "^3.8.1",
+    "nyc": "^10.0.0",
+    "redux-pack": "^0.1.5",
+    "tslint": "^4.5.1",
+    "tslint-config-xo": "^1.1.0",
+    "typescript": "^2.2.1"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
+    ]
+  }
+}

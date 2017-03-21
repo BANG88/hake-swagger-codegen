@@ -1,0 +1,53 @@
+import { handle } from 'redux-pack'
+import { Map } from 'immutable'
+import http from '../../http'
+{{#data}}
+{{#methods}}
+{{#.}}
+// {{tag}}/{{operationId}}
+export const {{#uppercase}}{{tag}}_{{operationId}} = '{{tag}}/{{operationId}}'{{/uppercase}}
+/**
+ *{{ description}}
+ *{{#isnt verb 'get'}} @params {{any}} data{{/isnt}}
+ * @returns ReduxPackAction
+ */
+export const {{camelcase operationId}} = ({{#isnt verb 'get'}}data{{/isnt}}) => {
+	return {
+		type: {{#uppercase}}{{tag}}_{{operationId}}{{/uppercase}},
+		promise: http.{{verb}}('/{{tag}}/{{operationId}}'{{#isnt verb 'get'}}, data{{/isnt}})
+	}
+}
+{{/.}}
+{{/methods}}
+/**
+ * initial state
+ * @param  {[]}}
+ */
+export const initialState = Map({
+	{{#methods}}
+	{{camelcase operationId}}: null,
+	{{/methods}}
+	loading: false
+})
+/**
+ * pure reducer
+ * @param  {} state=initialState
+ * @param  {} action
+ */
+export default (state = initialState, action) => {
+
+	const { type, payload } = action
+	switch (type) {
+		{{#methods}}
+		case {{#uppercase}}{{tag}}_{{operationId}}{{/uppercase}}:
+			return handle(state, action, {
+				start: s => state.set('loading', true),
+				success: s => state.set('{{camelcase operationId}}', payload.data).set('loading', false),
+				failure: s => state.set('{{camelcase operationId}}', payload.data).set('loading', false)
+			})
+		{{/methods}}
+		default:
+			return state
+	}
+}
+{{/data}}
