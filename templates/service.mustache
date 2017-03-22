@@ -11,7 +11,7 @@ export const {{#uppercase}}{{tag}}_{{operationId}} = '{{tag}}/{{operationId}}'{{
  *{{#isnt verb 'get'}} @params {{any}} data{{/isnt}}
  * @returns ReduxPackAction
  */
-export const {{camelcase operationId}} = ({{#isnt verb 'get'}}data{{/isnt}}) => {
+export const {{camelcase operationId}} = {{#isnt verb 'get'}}data{{/isnt}}{{#is verb 'get'}}(){{/is}} => {
 	return {
 		type: {{#uppercase}}{{tag}}_{{operationId}}{{/uppercase}},
 		promise: http.{{verb}}('/{{tag}}/{{operationId}}'{{#isnt verb 'get'}}, data{{/isnt}})

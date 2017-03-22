@@ -3,6 +3,7 @@
 		"module": "commonjs",
 		"moduleResolution": "node",
 		"lib": [
+			"dom",
 			"es2016"
 		],
 		"target": "es5",
@@ -18,8 +19,7 @@
 	},
 	"files": [
 		"index.ts",
-		"test.ts",
-		"cli.ts"
-
+		"cli.ts",
+		"test/test.ts"
 	]
 }

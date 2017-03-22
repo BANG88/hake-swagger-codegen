@@ -1,6 +1,7 @@
-import axios from 'axios'
+import axios, { AxiosInstance, AxiosPromise } from 'axios'
 /**
  * fake code .
  */
-const http = axios.create()
+const http: AxiosInstance = axios.create()
 export default http
+export { AxiosPromise }

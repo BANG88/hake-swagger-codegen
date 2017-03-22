@@ -1,8 +1,8 @@
 import test from 'ava'
-import { renderAll } from './index'
+import render from '../index'
 import * as fs from 'fs'
 test('no crash', t => {
-	renderAll()
+	render()
 })
 
 test('service.ts exist', t => {
